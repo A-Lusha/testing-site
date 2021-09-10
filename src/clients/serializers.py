@@ -1,5 +1,7 @@
 from rest_framework import serializers
+from django.contrib.auth import get_user_model
 from clients import models
+from django_filters import rest_framework as filters
 
 # https://www.django-rest-framework.org/api-guide/generic-views/#get_serializer_classself
 # https://www.django-rest-framework.org/api-guide/serializers/#object-level-validation

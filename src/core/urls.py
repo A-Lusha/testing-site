@@ -23,15 +23,18 @@ from clients import views as cv
 
 
 router = DefaultRouter()
-router.register(r'user', uv.UserProfileViewSet)
-router.register(r'client', cv.ClientViewSet)
+router.register(r'users', uv.UserProfileViewSet)
+router.register(r'clients', cv.ClientViewSet)
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('microsoft/', include('microsoft_auth.urls', namespace='microsoft')),
     path('rest-auth/', include('rest_auth.urls')),
     path('api-auth/', include('rest_framework.urls')),
+
     path('', include(router.urls), name='user-viewset'),
     path('', include(router.urls), name='client-viewset'),
-    path('admin/', admin.site.urls),
-    #path('api/', include('users.urls')),
-    #path('api/', include('clients.urls')),
+
+    #path('client/', include('clients.urls')),
+    path('user/', include('users.urls')),
 ]

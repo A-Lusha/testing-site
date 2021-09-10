@@ -1,10 +1,10 @@
 from django.db import models
-from django.conf import settings
+from django.contrib.auth import get_user_model
 
-User = settings.AUTH_USER_MODEL
+User = get_user_model()
 
 class Client(models.Model):
-
+    """Client model"""
 
     def __str__(self):
         title = self.first_name + ' ' + self.last_name
