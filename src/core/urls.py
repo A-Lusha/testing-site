@@ -20,6 +20,7 @@ from rest_framework.routers import DefaultRouter
 
 from users import views as uv
 from clients import views as cv
+from . import views
 
 
 router = DefaultRouter()
@@ -27,14 +28,15 @@ router.register(r'users', uv.UserProfileViewSet)
 router.register(r'clients', cv.ClientViewSet)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('microsoft/', include('microsoft_auth.urls', namespace='microsoft')),
+    path('', views.index, name='index'),
+    path('api/', include(router.urls), name='user-viewset'),
+    path('api/', include(router.urls), name='client-viewset'),
+    path('api/user/', include('users.urls')),
+    #path('api/client/', include('clients.urls')),
+
     path('rest-auth/', include('rest_auth.urls')),
     path('api-auth/', include('rest_framework.urls')),
+    path('accounts/', include('allauth.urls')),
 
-    path('', include(router.urls), name='user-viewset'),
-    path('', include(router.urls), name='client-viewset'),
-
-    #path('client/', include('clients.urls')),
-    path('user/', include('users.urls')),
+    path('admin/', admin.site.urls),
 ]

@@ -10,4 +10,4 @@ class UserProfileAdmin(UserAdmin):
     list_display = ["username", "email", "is_staff"]
 
 
-# admin.site.register(UserProfile, UserProfileAdmin)
+admin.site.register(UserProfile, UserProfileAdmin)

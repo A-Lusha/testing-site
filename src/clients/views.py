@@ -18,6 +18,8 @@ class ClientViewSet(viewsets.ModelViewSet):
             'last_name',
             'contact_email',
             'assigned_rep__id',
+            'status',
+            'schedule_sent'
         )
 
 
